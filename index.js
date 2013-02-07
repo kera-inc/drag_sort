@@ -11,19 +11,8 @@ var DragSort = {
       var dataTransfer = e.originalEvent.dataTransfer;
       dataTransfer.effectAllowed = 'move';
 
-      $(dragSource).css({ opacity: 0.4 });
+      $(dragSource).addClass('dragging');
       oldIndex = $(dragSource).index();
-    });
-
-    $(element).on('dragend.dragSort', childClass, function(e) {
-      newIndex = $(dragSource).index();
-      $(dragSource).css({ opacity: 1 });
-
-      if (oldIndex == newIndex) {
-        return;
-      }
-
-      callback(oldIndex, newIndex);
     });
 
     $(element).on('dragover.dragSort', childClass, function(e) {
@@ -48,6 +37,18 @@ var DragSort = {
       }
     });
 
+    $(element).on('dragend.dragSort', childClass, function(e) {
+      newIndex = $(dragSource).index();
+
+      $(dragSource).removeClass('dragging');
+
+      if (oldIndex == newIndex) {
+        return;
+      }
+
+      callback(oldIndex, newIndex);
+    });
+
     return {
       destroy: function() {
         $(element).off('.dragSort');
@@ -56,4 +57,4 @@ var DragSort = {
   }
 }
 
-module.export = DragSort;
+module.exports = DragSort;
