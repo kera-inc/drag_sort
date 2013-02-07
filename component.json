@@ -1,0 +1,11 @@
+{
+  "name": "drag_sort",
+  "dependencies": {
+    "component/jquery": "1.8.2"
+  },
+
+  "scripts": [
+    "index.js"
+  ]
+}
+
