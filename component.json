@@ -1,7 +1,7 @@
 {
   "name": "drag_sort",
   "dependencies": {
-    "components/jquery": "1.8.2"
+    "component/jquery": "1.8.2"
   },
 
   "scripts": [
